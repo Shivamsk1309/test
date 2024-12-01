@@ -1,0 +1,12 @@
+{
+  "aws": {
+
+  },
+  "database": {
+    "username": "",
+    "password": "",
+    "port": 38190,
+    "host": "",
+    "databaseName": ""
+  }
+}
