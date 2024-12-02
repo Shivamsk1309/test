@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { errorResponse, successResponse } from "../../../utils/responseHandler/responseHandler";
-import { checkLoginHelper } from "../helper/login.helper";
+import { checkLoginHelper } from "../helper/loginSignUp.helper";
 
 const checkLogin = async (req: Request, res: Response) => {
   try {

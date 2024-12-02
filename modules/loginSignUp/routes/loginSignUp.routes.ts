@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
-import { validateLoginParams } from '../middleware/login.middleware';
-import { checkLogin } from '../controller/login.controller';
+import { validateLoginParams } from '../middleware/loginSignUp.middleware';
+import { checkLogin } from '../controller/loginSignUp.controller';
 
 
 const routes = express();

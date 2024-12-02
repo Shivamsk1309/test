@@ -20,6 +20,7 @@ const checkLoginHelper = async ({
     });
   }
   const token = createJwtToken({ tokenParams: { email: userEmail } });
+  // save token in db TODO
   return { authToken: token };
 }
 

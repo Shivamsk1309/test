@@ -8,12 +8,12 @@ import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
 import config from './config';
-import createConnection from './database';
+import { createDatabaseConnection } from './database/config/database';
 import { authMiddleware } from './middleware/authMiddleware';
 import { errorResponse, STATUS_CODES } from './utils/responseHandler/responseHandler';
 import router from './routes';
 
-createConnection(config.database);
+createDatabaseConnection();
 const app = express();
 
 app.use(cors());

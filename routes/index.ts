@@ -1,4 +1,4 @@
-import loginRoutes from '../modules/login/routes/login.routes'
+import loginRoutes from '../modules/loginSignUp/routes/loginSignUp.routes'
 
 const router = (app: any) => {
   app.use('/login', loginRoutes);

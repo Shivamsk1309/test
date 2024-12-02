@@ -1,10 +1,10 @@
 import { throwValidationError } from '../../../utils/commonUtils/commonUtils';
 
 interface getUserDetailsHelperParams {
-  email: string,
+  userId: string,
 }
 const getUserDetailsHelper = async ({
-  email,
+  userId,
 }: getUserDetailsHelperParams) => {
   // get user details TODO
   const user = {};
@@ -16,6 +16,21 @@ const getUserDetailsHelper = async ({
   return { user };
 }
 
+interface updateUserDetailsHelperParams {
+  userId?: string,
+  password?: string,
+  mobileNumber?: string,
+  name?: string,
+  email?: string,
+}
+const updateUserDetailsHelper = async ({
+  userId, password, mobileNumber, name, email,
+}: updateUserDetailsHelperParams) => {
+  // update user details TODO
+  return {};
+}
+
 export {
   getUserDetailsHelper,
+  updateUserDetailsHelper,
 }

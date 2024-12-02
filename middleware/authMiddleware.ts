@@ -5,9 +5,9 @@ import jwt from 'jsonwebtoken';
 import config from '../config';
 import { CustomRequest } from '../utils/commonInterfaces';
 
-const validateTokenFromDb = async ({ email, token }: { email: string, token: string }) => {
+const validateTokenFromDb = async ({ userId, token }: { userId: string, token: string }) => {
   const userData = { token: '' };
-  // get token with email TODO
+  // get token with userId TODO
   if (!userData || userData.token !== token) {
     throwValidationError({
       message: 'Unauthorized Access',
@@ -28,15 +28,15 @@ const authMiddleware = async (req: CustomRequest, res: Response, next: NextFunct
     const decodedData: any = jwt.verify(token, config.jwt.secret, {
       ignoreExpiration: true,
     });
-    const { email } = decodedData;
-    if (!email) {
+    const { userId } = decodedData;
+    if (!userId) {
       throwValidationError({
         message: 'Unauthorized Access',
         code: STATUS_CODES.STATUS_CODE_UNAUTHORIZED,
       });
     }
-    await validateTokenFromDb({ email, token });
-    req.email = email;
+    await validateTokenFromDb({ userId, token });
+    req.userId = userId;
     return next();
   } catch (error) {
     errorResponse({

@@ -1,13 +1,16 @@
 import { Response } from "express";
 import { errorResponse, successResponse } from "../../../utils/responseHandler/responseHandler";
-import { getUserDetailsHelper } from "../helper/user.helper";
+import {
+  getUserDetailsHelper,
+  updateUserDetailsHelper,
+} from "../helper/user.helper";
 import { CustomRequest } from "../../../utils/commonInterfaces";
 
 const getUserDetails = async (req: CustomRequest, res: Response) => {
   try {
-    const email = req.email || '';
+    const userId: string = String(req.query.userId) || req.userId || '';
     const data = await getUserDetailsHelper({
-      email,
+      userId,
     });
     successResponse({
       res,
@@ -22,11 +25,14 @@ const getUserDetails = async (req: CustomRequest, res: Response) => {
   }
 };
 
-const createUser = async (req: CustomRequest, res: Response) => {
+const updateUserDetails = async (req: CustomRequest, res: Response) => {
   try {
-    const email = req.email || '';
-    const data = await getUserDetailsHelper({
-      email,
+    const userId = req.userId || '';
+    const {
+      password, mobileNumber, name, email,
+    } = req.body;
+    const data = await updateUserDetailsHelper({
+      userId, password, mobileNumber, name, email,
     });
     successResponse({
       res,
@@ -39,9 +45,9 @@ const createUser = async (req: CustomRequest, res: Response) => {
       res,
     });
   }
-}
+};
 
 export {
   getUserDetails,
-  createUser,
+  updateUserDetails,
 }
