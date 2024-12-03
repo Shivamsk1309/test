@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { errorResponse, successResponse } from "../../../utils/responseHandler/responseHandler";
-import { checkLoginHelper } from "../helper/loginSignUp.helper";
+import { checkLoginHelper, sendVerificationCodeHelper } from "../helper/loginSignUp.helper";
+import { CustomRequest } from "../../../utils/commonInterfaces";
 
 const checkLogin = async (req: Request, res: Response) => {
   try {
@@ -20,7 +21,25 @@ const checkLogin = async (req: Request, res: Response) => {
     });
   }
 };
-
+const sendVerficationCode = async (req: CustomRequest, res: Response) => {
+  try {
+    const {
+      mobileNumber,
+    } = req.body;
+    const data = await sendVerificationCodeHelper(mobileNumber);
+    successResponse({
+      res,
+      data,
+      message: 'Verification code send',
+    });
+  } catch (error) {
+    errorResponse({
+      error,
+      res,
+    });
+  }
+};
 export {
   checkLogin,
+  sendVerficationCode,
 }
