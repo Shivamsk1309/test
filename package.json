@@ -21,6 +21,8 @@
     "fs": "0.0.1-security",
     "helmet": "^8.0.0",
     "jsonwebtoken": "^9.0.2",
+    "mailgen": "^2.0.28",
+    "nodemailer": "^6.9.16",
     "prisma": "^6.0.1",
     "twilio": "^5.3.6"
   },
@@ -32,6 +34,7 @@
     "@types/helmet": "^4.0.0",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.10.1",
+    "@types/nodemailer": "^6.4.17",
     "nodemon": "^3.1.7",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
