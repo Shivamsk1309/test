@@ -29,6 +29,7 @@ const successResponse = ({
   code = 200,
   message = '',
 }: successResponseObj) => res.status(code).json({
+  code,
   data,
   message,
 });
@@ -51,7 +52,12 @@ const errorResponse = ({
   code = (error && ((error.error && error.error.code) || error.statusCode || error.code)) || code;
   message = (error && error.error && error.error.message) || (error && error.message) || message;
   data = (error && error.data) || data;
-  return res.status(code).json({
+  let statusCode = code;
+  if (code !== STATUS_CODES.STATUS_CODE_UNAUTHORIZED && code !== STATUS_CODES.STATUS_CODE_FAILURE) {
+    statusCode = STATUS_CODES.STATUS_CODE_SUCCESS;
+  }
+  return res.status(statusCode).json({
+    code,
     data,
     message,
   });
