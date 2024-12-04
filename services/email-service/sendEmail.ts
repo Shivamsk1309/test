@@ -5,7 +5,7 @@ import config from '../../config';
 const { sendEmailCredentials } = config;
 
 interface sendEmailParams {
-  sendTo: string
+  sendTo: string[]
   content: string
   subject: string
 }
@@ -39,6 +39,11 @@ const sendEmail = async ({ content, sendTo, subject }: sendEmailParams) => {
     html: mail,
   }
   const data = await transPoter.sendMail(message);
+  if (data.rejected.length) {
+    throw {
+      message: 'Email not sent'
+    }
+  }
 }
 
 export {
