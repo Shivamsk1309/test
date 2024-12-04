@@ -9,6 +9,10 @@ const config = {
   },
   jwt: {
     secret: String(process.env.jwtSecret)
+  },
+  sendEmailCredentials: {
+    email: process.env.emailId,
+    password: process.env.emailPassword,
   }
 };
 
